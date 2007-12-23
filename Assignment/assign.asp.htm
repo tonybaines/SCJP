@@ -1,0 +1,172 @@
+
+<HTML>
+<HEAD>
+  <!--<META HTTP-EQUIV="Expires" CONTENT="Mon, 0 Jan 1990 12:00:00 GMT">-->
+  <!--<META HTTP-EQUIV="Pragma" CONTENT="no-cache">-->
+  <SCRIPT LANGUAGE="JavaScript"><!--
+ 
+  function doClick(a,b) {
+   	  a.w.value = b;
+    a.submit();
+  }
+ 
+  function doIngnoreClick() {
+    return false;
+  }
+  
+  function openFaq(a,b) {
+    window.open('/sun_assignment/faq_blank.htm', 'faqWin', 'scrollbars,width=640,height=600,resizable');
+    a.w.value = b;
+  }
+// --></SCRIPT>
+<NOSCRIPT>
+ You need a web browser capable of supporting JavaScript. Try downloading the lastest version of Netscape Communicator or Internet Exporer. 
+</NOSCRIPT>
+  <TITLE>Customer Information - User Administration</TITLE>
+
+</HEAD>
+<BODY LEFTMARGIN="0" TOPMARGIN="0" MARGINWIDTH="0" MARGINHEIGHT="0" BGCOLOR="#ffffff">
+
+<FORM>
+<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="3" WIDTH="600">
+  <TR>
+    <TD BGCOLOR="#666699">
+    <IMG SRC="/sun_assignment/images/sunlogo.gif" ALIGN="BOTTOM" BORDER="0">
+</TD>
+    <TD BGCOLOR="#ccccff">
+    <P><CENTER><FONT SIZE="+2">CertManager<BR>
+    </FONT><FONT SIZE="-1">Data Access Service<SUP>&#153;</SUP></FONT></CENTER></TD>
+  </TR>
+  <TR>
+    <TD VALIGN="TOP" WIDTH="115" BGCOLOR="#666699">
+
+<!-- <INPUT WIDTH="125" HEIGHT="20" ALIGN="BOTTOM" BORDER="0" NATURALSIZEFLAG="0" TYPE="button" NAME="name" VALUE="Personal Info" onclick="doClick(window.document.hfPInfo,'PInfo')"> -->
+<INPUT WIDTH="125" HEIGHT="20" ALIGN="BOTTOM" BORDER="0" NATURALSIZEFLAG="0" TYPE="button" NAME="name" VALUE="Test History" onclick="doClick(window.document.hfTInfo,'TInfo')">
+<!-- <INPUT WIDTH="125" HEIGHT="20" ALIGN="BOTTOM" BORDER="0" NATURALSIZEFLAG="0" TYPE="button" NAME="name" VALUE="Cert Progress" onclick="doClick(window.document.hfCertP,'CertP')"> -->
+<INPUT WIDTH="125" HEIGHT="20" ALIGN="BOTTOM" BORDER="0" NATURALSIZEFLAG="0" NAME="name" TYPE="button" VALUE="FAQ" onclick="openFaq(window.document.hfFAQ,'DisplayFAQ')">
+<INPUT WIDTH="125" HEIGHT="20" ALIGN="BOTTOM" BORDER="0" NATURALSIZEFLAG="0" NAME="name" TYPE="button" VALUE="Password" onclick="doClick(window.document.hfPWD,'PWD')">
+<INPUT WIDTH="125" HEIGHT="20" ALIGN="BOTTOM" BORDER="0" NATURALSIZEFLAG="0" NAME="name" TYPE="button" VALUE="Logout" onclick="doClick(window.document.hfLogout,'Logout')">
+<IMG 
+    SRC="/sun_assignment/images/blank.gif" WIDTH="125" HEIGHT="20" ALIGN="BOTTOM"
+    BORDER="0" NATURALSIZEFLAG="0"> 
+</FORM>
+<FORM NAME="hfPInfo" ACTION="/sun_assignment/pinfo.idc"
+    ENCTYPE="ENCTYPE=&quot;x-www-form-urlencoded&quot;" METHOD="POST"><INPUT TYPE="hidden" NAME="st"
+    VALUE="1174128420.685">
+    <INPUT TYPE="hidden" NAME="cid" VALUE="457393"><INPUT
+    TYPE="hidden" NAME="w" VALUE=""><INPUT TYPE="hidden" NAME="x"
+    VALUE="SR1997440"><INPUT TYPE="hidden" NAME="y" VALUE="21oct96"><INPUT
+    TYPE="hidden" NAME="z" VALUE="40289"> </FORM>
+<FORM NAME="hfTInfo" ACTION="/sun_assignment/tinfo.idc"
+    ENCTYPE="ENCTYPE=&quot;x-www-form-urlencoded&quot;" METHOD="POST"><INPUT TYPE="hidden" NAME="st"
+    VALUE="1174128420.685">
+    <INPUT TYPE="hidden" NAME="cid" VALUE="457393"><INPUT
+    TYPE="hidden" NAME="w" VALUE=""><INPUT TYPE="hidden" NAME="x"
+    VALUE="SR1997440"><INPUT TYPE="hidden" NAME="y" VALUE="21oct96"><INPUT
+    TYPE="hidden" NAME="z" VALUE="40289"><INPUT TYPE="hidden" NAME="Events" VALUE="0"> </FORM>
+<FORM NAME="hfCertP" ACTION="/sun_assignment/certp.asp"
+    ENCTYPE="ENCTYPE=&quot;x-www-form-urlencoded&quot;" METHOD="POST"><INPUT TYPE="hidden" NAME="st"
+    VALUE="1174128420.685">
+    <INPUT TYPE="hidden" NAME="cid" VALUE="457393"><INPUT
+    TYPE="hidden" NAME="w" VALUE=""><INPUT TYPE="hidden" NAME="x"
+    VALUE="SR1997440"><INPUT TYPE="hidden" NAME="y" VALUE="21oct96"><INPUT
+    TYPE="hidden" NAME="z" VALUE="40289"><INPUT TYPE="hidden" NAME="WhichGroups"
+    VALUE=""> </FORM>
+<FORM NAME="hfHelp" ACTION="/sun_assignment/help.idc"
+    ENCTYPE="ENCTYPE=&quot;x-www-form-urlencoded&quot;" METHOD="POST"><INPUT TYPE="hidden" NAME="st"
+    VALUE="1174128420.685">
+    <INPUT TYPE="hidden" NAME="cid" VALUE="457393"><INPUT
+    TYPE="hidden" NAME="w" VALUE=""><INPUT TYPE="hidden" NAME="x"
+    VALUE="SR1997440"><INPUT TYPE="hidden" NAME="y" VALUE="21oct96"><INPUT
+    TYPE="hidden" NAME="z" VALUE="40289"> </FORM>
+<FORM NAME="hfPWD" ACTION="/sun_assignment/pwd.idc"
+    ENCTYPE="ENCTYPE=&quot;x-www-form-urlencoded&quot;" METHOD="POST"><INPUT TYPE="hidden" NAME="st"
+    VALUE="1174128420.685">
+    <INPUT TYPE="hidden" NAME="cid" VALUE="457393"><INPUT
+    TYPE="hidden" NAME="w" VALUE=""><INPUT TYPE="hidden" NAME="x"
+    VALUE="SR1997440"><INPUT TYPE="hidden" NAME="y" VALUE="21oct96"><INPUT
+    TYPE="hidden" NAME="z" VALUE="40289"></FORM>
+<FORM NAME="hfFAQ" ENCTYPE="x-www-form-urlencoded" METHOD="POST" ACTION="/sun_assignment/faq.idc" TARGET="faqWin">
+    <INPUT TYPE="hidden" NAME="w" VALUE="">
+	<INPUT TYPE="hidden" NAME="ShowInactive" VALUE="0">
+	<INPUT TYPE="hidden" NAME="x" VALUE="SR1997440">
+	<INPUT TYPE="hidden" NAME="y" VALUE="21oct96">
+	<INPUT TYPE="hidden" NAME="z" VALUE="40289"></FORM>
+</FORM>
+<FORM NAME="hfLogout" ACTION="/sun_assignment/logout.idc"
+    ENCTYPE="ENCTYPE=&quot;x-www-form-urlencoded&quot;" METHOD="POST">
+    <INPUT TYPE="hidden" NAME="cid" VALUE="457393"><INPUT
+    TYPE="hidden" NAME="w" VALUE=""><INPUT TYPE="hidden" NAME="x"
+    VALUE="SR1997440"><INPUT TYPE="hidden" NAME="y" VALUE="21oct96"><INPUT
+    TYPE="hidden" NAME="z" VALUE="40289"> </FORM>
+<FORM>
+   </TD>
+    <TD VALIGN="TOP">
+    <P>
+	<TABLE WIDTH="437" BORDER="1" CELLSPACING="2"
+    CELLPADDING="0">
+      <TR>
+        <TD WIDTH="100%">
+        <TABLE WIDTH="418" BORDER="0" CELLSPACING="2" CELLPADDING="0">
+          <TR>
+            <TD ALIGN="RIGHT" WIDTH="130">
+           Customer:</TD> 
+            <TD WIDTH="287">
+           <B>Tony&nbsp;&nbsp;Baines</B></TD> 
+          </TR>
+          <TR>
+            <TD WIDTH="130" ALIGN="RIGHT">
+            Testing ID:</TD> 
+            <TD WIDTH="287">
+            <B>sr1997440</B>
+</TD>
+          </TR>
+        </TABLE></TD>
+      </TR>
+    </TABLE>
+
+	
+    <P><B>Download instructions for the Java 2 exam:</B></P>
+
+    <P>Obtaining the Distribution <BR>
+    At the bottom of this page you will see a link for downloading
+    a jar archive file. Inside the archive you will find detailed
+    instructions for the assignment in the instructions.html file.</P>
+
+    <P>It is recommended that you read the instructions carefully
+    and fully, and ensure you understand them, before you begin working
+    on your solution.</P>
+
+    <P>Submitting Your Work <BR>
+    When you have completed your solution, you should build a jar
+    archive. You must build an archive; do not send individual files.
+    When you have prepared your submission archive, log back into
+    this Sun Java Certification facility and click on the &quot;Upload
+    Assignment&quot; button. Further instructions will be given at
+    that time.</P>
+
+    <P>Help<BR>
+    If you have difficulties, you can submit questions by sending
+    email to <a href="mailto:suncert@prometric.com">suncert@prometric.com</a>.</P>
+
+    <P>Click on the hot link to download your assignment.</P>
+
+	
+	
+	<P>
+	<table>
+	<tr>
+	<td> 
+Jar File: <A HREF="/sun_assignment/assignment/zSR1997440af1.jar">Java 2 Assignment</A><br>
+	</td>
+	</tr>
+	</table>
+	</p>
+	
+
+	
+</TD>
+  </TR>
+</TABLE>
+</BODY>
+</HTML>

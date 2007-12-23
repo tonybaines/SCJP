@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>SCJD_Exam</groupId>
+  <artifactId>SCJD_Exam</artifactId>
+  <version>0.0.1</version>
+  <dependencies>
+    <dependency>
+      <groupId>maven</groupId>
+      <artifactId>maven-test-plugin</artifactId>
+      <version>1.8.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>5.5</version>
+    </dependency>
+    <dependency>
+      <groupId>maven</groupId>
+      <artifactId>maven-checkstyle-plugin</artifactId>
+      <version>3.0.1</version>
+    </dependency>
+    <dependency>
+      <groupId>findbugs</groupId>
+      <artifactId>coreplugin</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+  </dependencies>
+</project>
+

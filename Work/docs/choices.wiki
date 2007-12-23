@@ -1,0 +1,13 @@
+The work involves a number of design choices that have to be made. In all such cases, the following principles should be applied.
+---++ Clarity and Maintainability
+   * A clear design, such as will be readily understood by junior programmers, will be preferred to a complex one, even if the complex one is a little more efficient. Code complexity, including nesting depth, argument passing, and the number of classes and interfaces, should be reasonable.
+---++ Documentation
+ The code itself should be as clear as possible; do not provide comments that do not add to the comprehensibility of the code. Awkward or complex code should have descriptive comments, and javadoc style comments must be used for each element of the public interface of each class. You must create a full suite of documentation for the classes of the completed project. This must be generated using the tool "javadoc" and must be in HTML format.  Provide javadoc documentation for all classes you write.
+ You must provide basic user documentation. This should be sufficient to allow a user who is familiar with the broad purpose of the project to use the application. This documentation must be in one of these three formats:
+   * HTML
+   * Plain text (not a wordprocessor format)
+   * Within the application as a help system.
+---++ Correctness
+   * Your project must conform to this specification.  Features that deviate from specification will not receive full credit.  You will not receive extra credit points for work beyond the requirements of the specification.
+
+------

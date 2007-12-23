@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<project name="scjD" default="help">
+    <description>SCJD URLyBird</description>
+
+    <property name="doc" value="docs/javadoc" />
+    <property name="build.debug" value="true" />
+    <property name="build" value="bin" />
+    <property name="src" value="code" />
+    <property name="test" value="test" />
+    <property name="test.reports" value="${test}/reports" />
+
+
+    <target name="help" description="Prints out the project help">
+        <java fork="no" classname="org.apache.tools.ant.Main">
+            <arg line="-projecthelp" />
+        </java>
+    </target>
+
+    <target name="clean" description="clean up">
+        <delete dir="${doc}" />
+        <delete dir="${build}" />
+        <delete dir="${test.reports}" />
+        <delete dir="${test}/${build}" />
+        <copy overwrite="true" file="bak/db-1x2.db" todir="."/>
+    </target>
+
+    <target name="javadoc" description="Build API documentation">
+        <delete dir="${doc}" failonerror="false" />
+        <mkdir dir="${doc}" />
+
+        <javadoc destdir="${doc}" packagenames="*" use="true" overview="overview.html" additionalparam="-breakiterator" sourcepath="${src}" />
+    </target>
+
+    <target name="compile" description="Compile the java code">
+        <echo level="info" message="Compiling with build.debug=${build.debug}" />
+
+        <mkdir dir="${build}" />
+        <javac deprecation="true" fork="true" destDir="${build}" debug="${build.debug}">
+            <src path="${src}" />
+        </javac>
+    </target>
+
+    <target name="compile-test" depends="compile" description="Compile the java test code">
+        <mkdir dir="${test}/${build}" />
+
+        <echo level="info" message="Compiling with build.debug=${build.debug}" />
+
+        <javac deprecation="true" destDir="${test}/${build}" debug="${build.debug}">
+            <classpath>
+                <path location="${build}" />
+            </classpath>
+            <src path="${test}" />
+        </javac>
+    </target>
+
+    <target name="test" depends="compile-test" description="Run tests and generate reports">
+        <mkdir dir="${test.reports}" />
+        <mkdir dir="${test.reports}/junit" />
+        <delete failonerror="false">
+            <fileset dir="${test.reports}" includes="TEST-*.xml" />
+        </delete>
+
+        <junit printsummary="on" haltonerror="true" haltonfailure="false" fork="yes" showoutput="true" failureproperty="test.failed">
+            <classpath>
+                <pathelement location="${build}" />
+                <pathelement location="${test}/${build}" />
+            </classpath>
+
+            <formatter type="xml" />
+            <batchtest todir="${test.reports}">
+                <fileset dir="${test}">
+                    <include name="**/*.java" />
+                </fileset>
+            </batchtest>
+        </junit>
+
+        <junitreport todir="${test.reports}">
+            <fileset dir="${test.reports}">
+                <include name="TEST-*.xml" />
+            </fileset>
+            <report format="noframes" todir="${test.reports}/junit" />
+        </junitreport>
+
+        <fail if="test.failed" message="Failure or error in JUnit tests" />
+
+    </target>
+
+    <target name="app-jar" depends="test">
+        <jar destfile="runme.jar">
+            <fileset dir="code">
+                <include name="" />
+            </fileset>
+        </jar>
+    </target>
+
+    <!--
+Packaging of Submissions
+All elements of your submission must be packaged in a single JAR file.
+The JAR file must have the following layout and contents in its root:
+  * The executable JAR containing the programs. This must be called runme.jar.
+  * The original, unchanged database file that was supplied to you. Note that you must keep a copy of the original database file supplied to you, and this must be the file you submit. The marking process will expect the exact same data without any changes.
+  * A directory called code, containing all the source code and related parts of your project. You must create subdirectories within this to reflect your package structure and distribute your source files within those directories.
+  * A file called version.txt. This must contain pure ASCII (not a word processor format) indicating the exact version of JDK you used, and the host platform you worked on.
+  * A directory called docs, containing the following items at the top level:
+    * This html file.
+    * A subdirectory called javadoc, containing HTML/Javadoc documentation for all classes and interfaces you are submitting.
+A file called choices.txt that containing pure ASCII (not a word processor format) text describing the significant design choices you made. Detail the problems you perceived, the issues surrounding them, your value judgments, and the decisions that you made. This document should also describe any uncertainties you had regarding the project, and the decisions you made when resolving them.
+User documentation for the database server and the gui client. If your user documentation is online then you may omit this file. However, if the documentation is not online, you must provide either a single plain ASCII (not word processor format) text document, which must be called userguide.txt, or multiple HTML files which must all be accessible from a starting point document that must be called userguide.html.
+  -->
+    <target name="dist" depends="app-jar, javadoc">
+        <jar destfile="scjda-SR1997440.jar">
+            <fileset dir=".">
+                <include name="runme.jar" />
+            </fileset>
+        </jar>
+    </target>
+
+</project>
