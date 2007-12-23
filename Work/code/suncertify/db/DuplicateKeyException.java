@@ -1,7 +1,6 @@
 package suncertify.db;
 
 /**
- * @version $Id$
  */
 public class DuplicateKeyException extends Exception {
 

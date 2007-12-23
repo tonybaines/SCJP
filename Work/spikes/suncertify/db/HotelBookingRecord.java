@@ -54,8 +54,7 @@ public class HotelBookingRecord {
      */
     private static String getString(final Map<String, String> fieldsMap,
             final String name) {
-        String value = fieldsMap.get(name);
-        return value;
+        return fieldsMap.get(name);
     }
 
     /**

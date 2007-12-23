@@ -4,12 +4,25 @@
 package suncertify.db;
 
 /**
- * @author tony
- *
+ * Data access class for the database.
+ * 
+ * N.B. Defined as part of the Assignment. DO NOT CHANGE THE NAME OR PACKAGE
+ * 
  */
-public class HotelBookingDAO implements DBMain {
+public class Data implements DBMain {
 
-    /* (non-Javadoc)
+    private final IDataHelper helper;
+
+    /**
+     * @param helper
+     */
+    public Data(IDataHelper helper) {
+        this.helper = helper;
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
      * @see suncertify.db.DBMain#create(java.lang.String[])
      */
     @Override
@@ -18,7 +31,9 @@ public class HotelBookingDAO implements DBMain {
         return 0;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see suncertify.db.DBMain#delete(int)
      */
     @Override
@@ -27,7 +42,9 @@ public class HotelBookingDAO implements DBMain {
 
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see suncertify.db.DBMain#find(java.lang.String[])
      */
     @Override
@@ -36,7 +53,9 @@ public class HotelBookingDAO implements DBMain {
         return null;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see suncertify.db.DBMain#isLocked(int)
      */
     @Override
@@ -45,7 +64,9 @@ public class HotelBookingDAO implements DBMain {
         return false;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see suncertify.db.DBMain#lock(int)
      */
     @Override
@@ -54,7 +75,9 @@ public class HotelBookingDAO implements DBMain {
 
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see suncertify.db.DBMain#read(int)
      */
     @Override
@@ -63,7 +86,9 @@ public class HotelBookingDAO implements DBMain {
         return null;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see suncertify.db.DBMain#unlock(int)
      */
     @Override
@@ -72,7 +97,9 @@ public class HotelBookingDAO implements DBMain {
 
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see suncertify.db.DBMain#update(int, java.lang.String[])
      */
     @Override

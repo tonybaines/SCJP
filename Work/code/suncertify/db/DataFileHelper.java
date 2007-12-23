@@ -1,6 +1,3 @@
-/**
- * 
- */
 package suncertify.db;
 
 import java.io.BufferedInputStream;
@@ -8,20 +5,22 @@ import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
+import java.util.Vector;
 import java.util.logging.Logger;
 
 /**
- * @author tony
  * 
  */
-public class DataFileHelper {
+public class DataFileHelper implements IDataHelper {
+
+    /**
+     * 
+     */
+    private static final int DELETED_RECORD_FLAG = 0x8000;
 
     private static final Logger LOG = Logger.getLogger(DataFileHelper.class
             .getName());
@@ -31,8 +30,13 @@ public class DataFileHelper {
     private short recordFieldsCount;
 
     private final List<SchemaEntry> schema = new ArrayList<SchemaEntry>();
-    private final List<HotelBookingRecord> records = new ArrayList<HotelBookingRecord>();
+    private final List<String[]> records = new ArrayList<String[]>();
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see suncertify.db.IDataHelper#parse(java.io.File)
+     */
     public synchronized final void parse(final File source) throws IOException {
         java.io.DataInputStream inputStream = new DataInputStream(
                 new BufferedInputStream(new FileInputStream(source)));
@@ -60,8 +64,7 @@ public class DataFileHelper {
 
             short lengthOfField = inputStream.readShort();
 
-            SchemaEntry entry = new SchemaEntry(fieldName.toString(),
-                    lengthOfField);
+            SchemaEntry entry = new SchemaEntry(fieldName, lengthOfField);
             this.schema.add(entry);
             LOG.fine("Created schema entry: " + entry);
 
@@ -84,31 +87,22 @@ public class DataFileHelper {
      * @param inputStream
      * @throws IOException
      */
-    private HotelBookingRecord readRecord(final DataInputStream inputStream)
+    private String[] readRecord(final DataInputStream inputStream)
             throws IOException {
-        boolean deleted = (inputStream.readShort() == 0x8000);
+        boolean deleted = (inputStream.readShort() == DELETED_RECORD_FLAG);
         LOG.info("Is this a deleted record?: " + deleted);
 
-        HotelBookingRecord retVal = null;
-        try {
-            Map<String, String> recordMap = new HashMap<String, String>();
-            for (Iterator<SchemaEntry> iterator = this.schema.iterator(); iterator
-                    .hasNext();) {
-                SchemaEntry schemaEntry = iterator.next();
-                String fieldValue = readAsciiString(inputStream, schemaEntry
-                        .getLengthOfField());
-                recordMap.put(schemaEntry.getFieldName(), fieldValue.trim());
-            }
-            LOG.fine("Map is " + recordMap);
-            retVal = HotelBookingRecord.buildFromMap(recordMap);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(e);
-        } catch (ParseException e) {
-            throw new IllegalArgumentException(e);
+        List<String> record = new Vector<String>();
+        for (Iterator<SchemaEntry> iterator = this.schema.iterator(); iterator
+                .hasNext();) {
+            SchemaEntry schemaEntry = iterator.next();
+            String fieldValue = readAsciiString(inputStream, schemaEntry
+                    .getLengthOfField());
+            record.add(fieldValue);
         }
+        LOG.fine("Record is " + record);
 
-        LOG.info("Record is " + retVal);
-        return retVal;
+        return record.toArray(new String[] {});
     }
 
     /**
@@ -130,24 +124,46 @@ public class DataFileHelper {
         return stringValue.toString();
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see suncertify.db.IDataHelper#getRecordFieldsCount()
+     */
     public final short getRecordFieldsCount() {
         return this.recordFieldsCount;
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see suncertify.db.IDataHelper#getStartOfDataOffset()
+     */
     public final int getStartOfDataOffset() {
         return this.startOfDataOffset;
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see suncertify.db.IDataHelper#getRecordCount()
+     */
     public final int getRecordCount() {
         return this.records.size();
     }
 
-    public final List<HotelBookingRecord> getRecords() {
+    /*
+     * (non-Javadoc)
+     * 
+     * @see suncertify.db.IDataHelper#getRecords()
+     */
+    public final List<String[]> getRecords() {
         return Collections.unmodifiableList(this.records);
     }
 
-    /**
-     * @return the schema
+    /*
+     * (non-Javadoc)
+     * 
+     * @see suncertify.db.IDataHelper#getSchema()
      */
     public final List<SchemaEntry> getSchema() {
         return Collections.unmodifiableList(this.schema);
