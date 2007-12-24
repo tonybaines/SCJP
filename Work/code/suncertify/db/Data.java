@@ -4,10 +4,17 @@
 package suncertify.db;
 
 /**
- * Data access class for the database.
+ * Data access class for the database.<p/>
  * 
- * N.B. Defined as part of the Assignment. DO NOT CHANGE THE NAME OR PACKAGE
+ * N.B. Defined to implement DBMain as part of the Assignment. DO NOT CHANGE THE
+ * NAME OR PACKAGE Subclassing DBMain should be appropriate.<p/>
  * 
+ * Questions:
+ * <li>What about reusing deleted records</li>
+ * <li>Padding for fields to bring them up to size</li>
+ * <li>Locking/unlocking/deleteing etc use a record number - this must be
+ * treated as implied by the order from the DB, but may be subverted by
+ * reordering in the GUI</li>
  */
 public class Data implements DBMain {
 
@@ -27,8 +34,7 @@ public class Data implements DBMain {
      */
     @Override
     public int create(String[] data) throws DuplicateKeyException {
-        // TODO Auto-generated method stub
-        return 0;
+        throw new UnsupportedOperationException();
     }
 
     /*
@@ -38,8 +44,7 @@ public class Data implements DBMain {
      */
     @Override
     public void delete(int recNo) throws RecordNotFoundException {
-        // TODO Auto-generated method stub
-
+        throw new UnsupportedOperationException();
     }
 
     /*
@@ -49,8 +54,7 @@ public class Data implements DBMain {
      */
     @Override
     public int[] find(String[] criteria) throws RecordNotFoundException {
-        // TODO Auto-generated method stub
-        return null;
+        throw new UnsupportedOperationException();
     }
 
     /*
@@ -60,8 +64,7 @@ public class Data implements DBMain {
      */
     @Override
     public boolean isLocked(int recNo) throws RecordNotFoundException {
-        // TODO Auto-generated method stub
-        return false;
+        throw new UnsupportedOperationException();
     }
 
     /*
@@ -71,8 +74,7 @@ public class Data implements DBMain {
      */
     @Override
     public void lock(int recNo) throws RecordNotFoundException {
-        // TODO Auto-generated method stub
-
+        throw new UnsupportedOperationException();
     }
 
     /*
@@ -82,8 +84,7 @@ public class Data implements DBMain {
      */
     @Override
     public String[] read(int recNo) throws RecordNotFoundException {
-        // TODO Auto-generated method stub
-        return null;
+        throw new UnsupportedOperationException();
     }
 
     /*
@@ -93,8 +94,7 @@ public class Data implements DBMain {
      */
     @Override
     public void unlock(int recNo) throws RecordNotFoundException {
-        // TODO Auto-generated method stub
-
+        throw new UnsupportedOperationException();
     }
 
     /*
@@ -104,8 +104,7 @@ public class Data implements DBMain {
      */
     @Override
     public void update(int recNo, String[] data) throws RecordNotFoundException {
-        // TODO Auto-generated method stub
-
+        throw new UnsupportedOperationException();
     }
 
 }

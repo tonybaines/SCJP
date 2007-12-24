@@ -1,0 +1,6 @@
+#Mon Dec 24 09:53:38 GMT 2007
+eclipse.preferences.version=1
+org.eclipse.jdt.ui.ignorelowercasenames=true
+org.eclipse.jdt.ui.importorder=java;javax;org;com;
+org.eclipse.jdt.ui.ondemandthreshold=3
+org.eclipse.jdt.ui.staticondemandthreshold=3
