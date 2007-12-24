@@ -2,15 +2,13 @@ package suncertify.db;
 
 import static org.junit.Assert.*;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Logger;
+
+import org.junit.Test;
 
 public class TestDataFileHelper {
 
@@ -19,7 +17,7 @@ public class TestDataFileHelper {
 
     @Test
     public void shouldReadMetaDataFromAValidStream() throws IOException {
-        IDataHelper helper = new DataFileHelper();
+        DataFileHelper helper = new DataFileHelper();
         helper.parse(new File("Work/db-1x2.db"));
         assertEquals(helper.getStartOfDataOffset(), 74);
         assertEquals(helper.getRecordFieldsCount(), 7);
@@ -30,7 +28,7 @@ public class TestDataFileHelper {
 
     @Test
     public void shouldReadAllRecordsFromAValidStream() throws IOException {
-        IDataHelper helper = new DataFileHelper();
+        DataFileHelper helper = new DataFileHelper();
         helper.parse(new File("Work/db-1x2.db"));
 
         List<String[]> records = helper.getRecords();

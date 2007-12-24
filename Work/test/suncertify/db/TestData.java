@@ -1,7 +1,7 @@
 package suncertify.db;
 
-import static org.easymock.EasyMock.createMock;
-import static org.easymock.EasyMock.replay;
+import static org.easymock.classextension.EasyMock.createMock;
+import static org.easymock.classextension.EasyMock.replay;
 import static org.junit.Assert.*;
 
 import org.junit.After;
@@ -13,11 +13,11 @@ import org.junit.Test;
  */
 public class TestData {
 
-    private IDataHelper mockHelper;
+    private DataFileHelper mockHelper;
 
     @Before
     public void setUp() {
-        mockHelper = createMock(IDataHelper.class);
+        mockHelper = createMock(DataFileHelper.class);
     }
 
     @After
@@ -27,7 +27,6 @@ public class TestData {
 
     @org.junit.Test()
     public void shouldCreateANewDataInstance() {
-        // TODO: Placeholder test
         DBMain data = new Data(mockHelper);
         assertNotNull(data);
     }

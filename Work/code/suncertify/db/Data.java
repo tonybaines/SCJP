@@ -11,12 +11,12 @@ package suncertify.db;
  */
 public class Data implements DBMain {
 
-    private final IDataHelper helper;
+    private final DataFileHelper helper;
 
     /**
      * @param helper
      */
-    public Data(IDataHelper helper) {
+    public Data(DataFileHelper helper) {
         this.helper = helper;
     }
 

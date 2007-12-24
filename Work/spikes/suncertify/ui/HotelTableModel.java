@@ -6,14 +6,13 @@ import java.io.IOException;
 import javax.swing.table.AbstractTableModel;
 
 import suncertify.db.DataFileHelper;
-import suncertify.db.IDataHelper;
 
 /**
  * 
  */
 public class HotelTableModel extends AbstractTableModel {
 
-    private final IDataHelper helper;
+    private final DataFileHelper helper;
 
     /**
      * @throws IOException

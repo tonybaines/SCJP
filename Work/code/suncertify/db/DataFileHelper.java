@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 /**
  * 
  */
-public class DataFileHelper implements IDataHelper {
+public class DataFileHelper {
 
     /**
      * 
