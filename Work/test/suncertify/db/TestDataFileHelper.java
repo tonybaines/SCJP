@@ -1,7 +1,10 @@
 package suncertify.db;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotNull;
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,14 +12,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Logger;
 
-import org.testng.annotations.Test;
-
 public class TestDataFileHelper {
 
     private static final Logger LOG = Logger.getLogger(TestDataFileHelper.class
             .getName());
 
-    @Test(enabled = true)
+    @Test
     public void shouldReadMetaDataFromAValidStream() throws IOException {
         IDataHelper helper = new DataFileHelper();
         helper.parse(new File("Work/db-1x2.db"));
@@ -27,7 +28,7 @@ public class TestDataFileHelper {
         assertEquals(helper.getRecords().size(), 29);
     }
 
-    @Test(enabled = true)
+    @Test
     public void shouldReadAllRecordsFromAValidStream() throws IOException {
         IDataHelper helper = new DataFileHelper();
         helper.parse(new File("Work/db-1x2.db"));
