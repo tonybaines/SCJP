@@ -27,7 +27,8 @@ public class TestDataFileHelper {
         assertEquals(helper.getRecords().size(), 29);
     }
 
-    public void shoudlReadAllRecordsFromAValidStream() throws IOException {
+    @Test(enabled = true)
+    public void shouldReadAllRecordsFromAValidStream() throws IOException {
         IDataHelper helper = new DataFileHelper();
         helper.parse(new File("Work/db-1x2.db"));
 
@@ -35,7 +36,11 @@ public class TestDataFileHelper {
         for (Iterator<String[]> iterator = records.iterator(); iterator
                 .hasNext();) {
             String[] record = iterator.next();
-            assertNotNull(record[0]);
+            for (int i = 0; i < record.length; i++) {
+                assertNotNull(record[i]);
+                assertEquals(record[i], record[i].trim());
+            }
+
         }
     }
 

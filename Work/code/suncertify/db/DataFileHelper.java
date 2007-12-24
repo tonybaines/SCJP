@@ -60,7 +60,8 @@ public class DataFileHelper implements IDataHelper {
         for (int fieldNum = 0; fieldNum < getRecordFieldsCount(); fieldNum++) {
             short fieldNameLength = inputStream.readShort();
 
-            String fieldName = readAsciiString(inputStream, fieldNameLength);
+            String fieldName = readAsciiString(inputStream, fieldNameLength)
+                    .trim();
 
             short lengthOfField = inputStream.readShort();
 
@@ -96,8 +97,8 @@ public class DataFileHelper implements IDataHelper {
         for (Iterator<SchemaEntry> iterator = this.schema.iterator(); iterator
                 .hasNext();) {
             SchemaEntry schemaEntry = iterator.next();
-            String fieldValue = readAsciiString(inputStream, schemaEntry
-                    .getLengthOfField());
+            String fieldValue = readAsciiString(inputStream,
+                    schemaEntry.getLengthOfField()).trim();
             record.add(fieldValue);
         }
         LOG.fine("Record is " + record);
