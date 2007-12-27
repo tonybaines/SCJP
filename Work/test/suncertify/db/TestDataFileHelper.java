@@ -43,4 +43,9 @@ public class TestDataFileHelper {
         }
     }
 
+    @Test
+    public void shouldFailToOpenAnInvalidStream() {
+        fail("Not implemented");
+    }
+
 }
