@@ -6,7 +6,7 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.logging.Logger;
 
 /**
- * 
+ *
  */
 public class RMIRemote implements IRemote {
     private static final Logger LOG = Logger.getLogger(RMIRemote.class
@@ -18,9 +18,6 @@ public class RMIRemote implements IRemote {
     }
 
     public static void main(String[] args) {
-        if (System.getSecurityManager() == null) {
-            System.setSecurityManager(new SecurityManager());
-        }
 
         try {
             String name = "RMIRemote";

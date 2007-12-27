@@ -5,16 +5,13 @@ import java.rmi.registry.Registry;
 import java.util.logging.Logger;
 
 /**
- * 
+ *
  */
 public class RMILocal {
     private static final Logger LOG = Logger
             .getLogger(RMILocal.class.getName());
 
     public static void main(String args[]) {
-        if (System.getSecurityManager() == null) {
-            System.setSecurityManager(new SecurityManager());
-        }
         try {
             String name = "RMIRemote";
             Registry registry = LocateRegistry.getRegistry(1099);
