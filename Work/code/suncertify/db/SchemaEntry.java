@@ -1,6 +1,3 @@
-/**
- * 
- */
 package suncertify.db;
 
 /**
@@ -16,8 +13,7 @@ public class SchemaEntry {
      * @param fieldName
      * @param lengthOfField
      */
-    public SchemaEntry(@SuppressWarnings("hiding")
-    String fieldName, short lengthOfField) {
+    public SchemaEntry(String fieldName, short lengthOfField) {
         this.fieldName = fieldName;
         this.lengthOfField = lengthOfField;
     }

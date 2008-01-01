@@ -1,0 +1,72 @@
+<class-diagram generalizations="true" realizations="true" associations="true" dependencies="true" 
+  nesting-relationships="true">  
+  <classifier-display autosize="true" package="true" attributes="false" operations="true" initial-value="false" 
+    signature="true" visibility="true"/>  
+  <association-display labels="true" multiplicity="true"/>  
+  <class type="java" name="suncertify.db.Data" project="SCJD Exam" file="/SCJD Exam/Work/code/suncertify/db/Data.java" 
+    corner="BOTTOM_RIGHT">    
+    <display autosize="true" package="true" attributes="true" operations="true" initial-value="false" signature="true" 
+      visibility="true"/>    
+    <position x="617" y="288" width="-1" height="-1"/>  
+  </class>  
+  <class type="java" name="suncertify.db.DataFileHelper" project="SCJD Exam" 
+    file="/SCJD Exam/Work/code/suncertify/db/DataFileHelper.java" corner="BOTTOM_RIGHT">    
+    <display autosize="true" package="true" attributes="true" operations="true" initial-value="false" signature="true" 
+      visibility="true"/>    
+    <position x="378" y="332" width="-1" height="-1"/>  
+  </class>  
+  <interface type="java" name="suncertify.db.DBMain" project="SCJD Exam" 
+    file="/SCJD Exam/Work/code/suncertify/db/DBMain.java" corner="BOTTOM_RIGHT">    
+    <display autosize="true" package="true" attributes="true" operations="true" initial-value="false" signature="true" 
+      visibility="true"/>    
+    <position x="617" y="77" width="-1" height="-1"/>  
+  </interface>  
+  <class type="java" name="suncertify.db.DuplicateKeyException" project="SCJD Exam" 
+    file="/SCJD Exam/Work/code/suncertify/db/DuplicateKeyException.java" corner="BOTTOM_RIGHT">    
+    <display autosize="true" package="true" attributes="true" operations="true" initial-value="false" signature="true" 
+      visibility="true"/>    
+    <position x="136" y="47" width="-1" height="-1"/>  
+  </class>  
+  <class type="java" name="suncertify.db.RecordNotFoundException" project="SCJD Exam" 
+    file="/SCJD Exam/Work/code/suncertify/db/RecordNotFoundException.java" corner="BOTTOM_RIGHT">    
+    <display autosize="true" package="true" attributes="true" operations="true" initial-value="false" signature="true" 
+      visibility="true"/>    
+    <position x="97" y="180" width="-1" height="-1"/>  
+  </class>  
+  <interface type="java" name="suncertify.db.Schema" project="SCJD Exam" 
+    file="/SCJD Exam/Work/code/suncertify/db/Schema.java" corner="BOTTOM_RIGHT">    
+    <display autosize="true" package="true" attributes="true" operations="true" initial-value="false" signature="true" 
+      visibility="true"/>    
+    <position x="323" y="73" width="-1" height="-1"/>  
+  </interface>  
+  <class type="java" name="suncertify.db.SchemaEntry" project="SCJD Exam" 
+    file="/SCJD Exam/Work/code/suncertify/db/SchemaEntry.java" corner="BOTTOM_RIGHT">    
+    <display autosize="true" package="true" attributes="true" operations="true" initial-value="false" signature="true" 
+      visibility="true"/>    
+    <position x="124" y="396" width="-1" height="-1"/>  
+  </class>  
+  <association>    
+    <display labels="true" multiplicity="true"/>    
+    <source navigable="false" project="SCJD Exam" name="suncertify.db.Data" 
+      file="/SCJD Exam/Work/code/suncertify/db/Data.java">      
+      <attribute name="helper"/>      
+      <multiplicity minimum="0" maximum="1"/>    
+    </source>    
+    <target navigable="true" project="SCJD Exam" name="suncertify.db.DataFileHelper" 
+      file="/SCJD Exam/Work/code/suncertify/db/DataFileHelper.java"/>  
+  </association>  
+  <association>    
+    <display labels="true" multiplicity="true"/>    
+    <source navigable="false" project="SCJD Exam" name="suncertify.db.DataFileHelper" 
+      file="/SCJD Exam/Work/code/suncertify/db/DataFileHelper.java">      
+      <attribute name="schema"/>      
+      <multiplicity minimum="0" maximum="2147483647"/>    
+    </source>    
+    <target navigable="true" project="SCJD Exam" name="suncertify.db.SchemaEntry" 
+      file="/SCJD Exam/Work/code/suncertify/db/SchemaEntry.java"/>  
+  </association>  
+  <realization>    
+    <source project="SCJD Exam" name="suncertify.db.Data" file="/SCJD Exam/Work/code/suncertify/db/Data.java"/>    
+    <target project="SCJD Exam" name="suncertify.db.DBMain" file="/SCJD Exam/Work/code/suncertify/db/DBMain.java"/>  
+  </realization>
+</class-diagram>

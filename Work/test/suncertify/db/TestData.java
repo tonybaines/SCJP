@@ -1,38 +1,34 @@
 package suncertify.db;
 
-import static org.easymock.classextension.EasyMock.createMock;
-import static org.easymock.classextension.EasyMock.replay;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.unitils.UnitilsJUnit4;
+import org.unitils.easymock.annotation.RegularMock;
 
 /**
  * 
  */
-public class TestData {
+public class TestData extends UnitilsJUnit4 {
 
+    @RegularMock
     private DataFileHelper mockHelper;
+
+    private DBMain data;
 
     @Before
     public void setUp() {
-        mockHelper = createMock(DataFileHelper.class);
-    }
-
-    @After
-    public void verifyMockBehaviour() {
-        replay(mockHelper);
+        data = new Data(mockHelper);
     }
 
     @org.junit.Test()
     public void shouldCreateANewDataInstance() {
-        DBMain data = new Data(mockHelper);
         assertNotNull(data);
     }
 
     @Test()
-    public void shouldReturnARecordWhenTheNameMatches() {
-        fail("Not implemented");
+    public void shouldReturnARecordWhenTheNameMatches() throws Exception {
+        data.find(new String[] { "Bob" });
     }
 }

@@ -1,8 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?><project>
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
   <modelVersion>4.0.0</modelVersion>
   <groupId>SCJD_Exam</groupId>
   <artifactId>SCJD_Exam</artifactId>
   <version>0.0.1</version>
+  <repositories>
+    <repository>
+      <id>FEST</id>
+      <url>http://fest.googlecode.com/svn/trunk/fest/m2/repository/</url>
+    </repository>
+  </repositories>
   <dependencies>
     <dependency>
       <groupId>maven</groupId>
@@ -33,6 +40,26 @@
       <groupId>org.easymock</groupId>
       <artifactId>easymockclassextension</artifactId>
       <version>2.2.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.unitils</groupId>
+      <artifactId>unitils</artifactId>
+      <version>1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>fest</groupId>
+      <artifactId>fest-swing</artifactId>
+      <version>0.7</version>
+    </dependency>
+    <dependency>
+      <groupId>fest</groupId>
+      <artifactId>fest-assert</artifactId>
+      <version>0.7</version>
+    </dependency>
+    <dependency>
+      <groupId>fest</groupId>
+      <artifactId>fest-mocks</artifactId>
+      <version>0.1-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>
