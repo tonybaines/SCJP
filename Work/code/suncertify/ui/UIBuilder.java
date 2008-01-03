@@ -17,7 +17,7 @@ public class UIBuilder {
 
     public JFrame buildUserInterface() {
         // Create and set up the window.
-        JFrame frame = new URLyBirdFrame(WINDOW_TITLE);
+        JFrame frame = new JFrame(WINDOW_TITLE);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Set up the content pane.
@@ -32,7 +32,7 @@ public class UIBuilder {
         return frame;
     }
 
-    public void addComponentsToPane(Container pane) {
+    private void addComponentsToPane(Container pane) {
 
         // Center is the JTable
         JScrollPane scrollPane = new JScrollPane(buildTable());

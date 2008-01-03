@@ -65,9 +65,9 @@ public class DataFileHelper {
 
             short lengthOfField = inputStream.readShort();
 
-            SchemaEntry entry = new SchemaEntry(fieldName, lengthOfField);
-            this.schema.add(entry);
-            LOG.fine("Created schema entry: " + entry);
+            this.schema.add(new SchemaEntry(fieldName, lengthOfField));
+            LOG.fine("Created schema entry: "
+                    + this.schema.get(this.schema.size() - 1));
 
         }
     }
@@ -78,22 +78,25 @@ public class DataFileHelper {
      */
     private void parseRecords(final DataInputStream inputStream)
             throws IOException {
-
+        int recordNum = 0;
         while (inputStream.available() > 0) {
-            this.records.add(readRecord(inputStream));
+            this.records.add(readRecord(inputStream, recordNum));
+            recordNum++;
         }
     }
 
     /**
      * @param inputStream
+     * @param recordNum
      * @throws IOException
      */
-    private String[] readRecord(final DataInputStream inputStream)
+    private String[] readRecord(final DataInputStream inputStream, int recordNum)
             throws IOException {
         boolean deleted = (inputStream.readShort() == DELETED_RECORD_FLAG);
-        LOG.info("Is this a deleted record?: " + deleted);
+        LOG.fine("Is this a deleted record?: " + deleted);
 
         List<String> record = new Vector<String>();
+        record.add(Integer.toString(recordNum));
         for (Iterator<SchemaEntry> iterator = this.schema.iterator(); iterator
                 .hasNext();) {
             SchemaEntry schemaEntry = iterator.next();
@@ -101,6 +104,7 @@ public class DataFileHelper {
                     schemaEntry.getLengthOfField()).trim();
             record.add(fieldValue);
         }
+        record.add(Boolean.toString(deleted));
         LOG.fine("Record is " + record);
 
         return record.toArray(new String[] {});

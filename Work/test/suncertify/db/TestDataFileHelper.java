@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 
 import org.junit.Test;
 
+@SuppressWarnings("all")
 public class TestDataFileHelper {
 
     private static final Logger LOG = Logger.getLogger(TestDataFileHelper.class
@@ -31,19 +32,25 @@ public class TestDataFileHelper {
         DataFileHelper helper = new DataFileHelper();
         helper.parse(new File("Work/db-1x2.db"));
 
+        int lastRecordNum = -1;
         List<String[]> records = helper.getRecords();
         for (Iterator<String[]> iterator = records.iterator(); iterator
                 .hasNext();) {
             String[] record = iterator.next();
+            int recordNum = Integer.parseInt(record[0]);
+
             for (int i = 0; i < record.length; i++) {
                 assertNotNull(record[i]);
                 assertEquals(record[i], record[i].trim());
             }
-
+            assertEquals(lastRecordNum + 1, recordNum);
+            lastRecordNum = recordNum;
         }
+        assertEquals(lastRecordNum + 1, helper.getRecordCount());
     }
 
     @Test
+    @org.junit.Ignore
     public void shouldFailToOpenAnInvalidStream() {
         fail("Not implemented");
     }

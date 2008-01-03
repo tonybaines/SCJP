@@ -7,9 +7,7 @@ import org.junit.Test;
 import org.unitils.UnitilsJUnit4;
 import org.unitils.easymock.annotation.RegularMock;
 
-/**
- * 
- */
+@SuppressWarnings("all")
 public class TestData extends UnitilsJUnit4 {
 
     @RegularMock

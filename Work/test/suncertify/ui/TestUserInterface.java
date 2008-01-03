@@ -6,13 +6,13 @@ import static org.junit.Assert.assertEquals;
 import org.fest.swing.fixture.FrameFixture;
 import org.junit.*;
 
+@SuppressWarnings("all")
 public class TestUserInterface {
     private FrameFixture window;
 
     @Before
     public void setUp() {
-        window = new FrameFixture(new UIBuilder()
-                .buildUserInterface());
+        window = new FrameFixture(new UIBuilder().buildUserInterface());
         window.show(); // shows the frame to test
     }
 
