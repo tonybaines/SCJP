@@ -9,7 +9,7 @@
       visibility="true"/>    
     <position x="617" y="288" width="-1" height="-1"/>  
   </class>  
-  <class type="java" name="suncertify.db.DataFileHelper" project="SCJD Exam" 
+  <class type="java" name="suncertify.db.DataFile" project="SCJD Exam" 
     file="/SCJD Exam/Work/code/suncertify/db/DataFileHelper.java" corner="BOTTOM_RIGHT">    
     <display autosize="true" package="true" attributes="true" operations="true" initial-value="false" signature="true" 
       visibility="true"/>    
@@ -47,17 +47,7 @@
   </class>  
   <association>    
     <display labels="true" multiplicity="true"/>    
-    <source navigable="false" project="SCJD Exam" name="suncertify.db.Data" 
-      file="/SCJD Exam/Work/code/suncertify/db/Data.java">      
-      <attribute name="helper"/>      
-      <multiplicity minimum="0" maximum="1"/>    
-    </source>    
-    <target navigable="true" project="SCJD Exam" name="suncertify.db.DataFileHelper" 
-      file="/SCJD Exam/Work/code/suncertify/db/DataFileHelper.java"/>  
-  </association>  
-  <association>    
-    <display labels="true" multiplicity="true"/>    
-    <source navigable="false" project="SCJD Exam" name="suncertify.db.DataFileHelper" 
+    <source navigable="false" project="SCJD Exam" name="suncertify.db.DataFile" 
       file="/SCJD Exam/Work/code/suncertify/db/DataFileHelper.java">      
       <attribute name="schema"/>      
       <multiplicity minimum="0" maximum="2147483647"/>    
@@ -68,5 +58,15 @@
   <realization>    
     <source project="SCJD Exam" name="suncertify.db.Data" file="/SCJD Exam/Work/code/suncertify/db/Data.java"/>    
     <target project="SCJD Exam" name="suncertify.db.DBMain" file="/SCJD Exam/Work/code/suncertify/db/DBMain.java"/>  
-  </realization>
+  </realization>  
+  <association>    
+    <display labels="true" multiplicity="true"/>    
+    <source navigable="false" project="SCJD Exam" name="suncertify.db.Data" 
+      file="/SCJD Exam/Work/code/suncertify/db/Data.java">      
+      <attribute name="helper"/>      
+      <multiplicity minimum="0" maximum="1"/>    
+    </source>    
+    <target navigable="true" project="SCJD Exam" name="suncertify.db.DataFile" 
+      file="/SCJD Exam/Work/code/suncertify/db/DataFileHelper.java"/>  
+  </association>
 </class-diagram>

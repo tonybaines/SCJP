@@ -73,7 +73,16 @@ public class RoomBookingService {
                 null, null, null, null, null });
 
         for (int i = 0; i < recordNumbers.length; i++) {
-            records.add(getRecord(recordNumbers[i]));
+            final String[] record = getRecord(recordNumbers[i]);
+
+            boolean isExactNameMatch = (null == name)
+                    || (name.equals(Records.getName(record)));
+            boolean isExactLocationMatch = (null == location)
+                    || (location.equals(Records.getLocation(record)));
+
+            if (isExactNameMatch && isExactLocationMatch) {
+                records.add(record);
+            }
         }
 
         return records.toArray(new String[][] {});

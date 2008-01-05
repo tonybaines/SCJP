@@ -7,7 +7,7 @@ import org.junit.Test;
 /**
  * 
  */
-public class RecordsTest {
+public class TestRecords {
     private static final String[] EXPECTED_RECORD = new String[] { "0",
             "Fawlty", "Bognor", "2", "false", "30.00", "2007/01/01",
             "12345678", "false" };
@@ -30,5 +30,17 @@ public class RecordsTest {
         assertEquals(
                 "[Rec No.=0, Name=Fawlty, City=Bognor, Max. persons=2, Smoking allowed?=false, Cost=30.00, Date available=2007/01/01, Owning Customer ID=12345678, Deleted?.=false]",
                 Records.toString(EXPECTED_RECORD));
+    }
+
+    @Test
+    public void shouldExtractTheNameFromARecord() throws Exception {
+        assertEquals("Fawlty", Records.getName(EXPECTED_RECORD));
+
+    }
+
+    @Test
+    public void shouldExtractTheCityFromARecord() throws Exception {
+        assertEquals("Bognor", Records.getLocation(EXPECTED_RECORD));
+
     }
 }

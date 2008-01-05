@@ -1,17 +1,33 @@
 package suncertify.db;
 
 import static org.junit.Assert.assertNotNull;
+import static org.easymock.classextension.EasyMock.expect;
+import static org.fest.assertions.Assertions.assertThat;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.unitils.UnitilsJUnit4;
-import org.unitils.easymock.annotation.RegularMock;
+import org.unitils.easymock.EasyMockUnitils;
+import org.unitils.easymock.annotation.Mock;
 
 @SuppressWarnings("all")
 public class TestData extends UnitilsJUnit4 {
 
-    @RegularMock
-    private DataFileHelper mockHelper;
+    private static final List<String[]> RECORDS;
+
+    static {
+        RECORDS = new ArrayList<String[]>();
+        RECORDS.add(new String[] { "0", "Fawlty", "Bognor", "2", "false",
+                "30.00", "2007/01/01", "12345678", "false" });
+        RECORDS.add(new String[] { "1", "Hilton", "London", "5", "false",
+                "130.00", "2007/01/02", "87654321", "false" });
+    }
+
+    @Mock
+    private DataFile mockHelper;
 
     private DBMain data;
 
@@ -20,13 +36,17 @@ public class TestData extends UnitilsJUnit4 {
         data = new Data(mockHelper);
     }
 
-    @org.junit.Test()
+    @Test()
     public void shouldCreateANewDataInstance() {
-        assertNotNull(data);
+        assertThat(data).isNotNull();
     }
 
     @Test()
     public void shouldReturnARecordWhenTheNameMatches() throws Exception {
-        data.find(new String[] { "Bob" });
+        expect(mockHelper.getRecords()).andReturn(RECORDS);
+        EasyMockUnitils.replay();
+
+        final int[] findResults = data.find(new String[] { "Hilton" });
+        assertThat(findResults).hasSize(1).containsOnly(1);
     }
 }

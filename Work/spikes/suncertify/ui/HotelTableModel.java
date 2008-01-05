@@ -5,14 +5,14 @@ import java.io.IOException;
 
 import javax.swing.table.AbstractTableModel;
 
-import suncertify.db.DataFileHelper;
+import suncertify.db.DataFile;
 
 /**
  * 
  */
 public class HotelTableModel extends AbstractTableModel {
 
-    private final DataFileHelper helper;
+    private final DataFile helper;
 
     /**
      * @throws IOException
@@ -20,7 +20,7 @@ public class HotelTableModel extends AbstractTableModel {
      */
     public HotelTableModel() throws IOException {
         super();
-        helper = new DataFileHelper();
+        helper = new DataFile();
         helper.parse(new File("Work/db-1x2.db"));
     }
 

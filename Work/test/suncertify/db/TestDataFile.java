@@ -11,14 +11,14 @@ import java.util.logging.Logger;
 import org.junit.Test;
 
 @SuppressWarnings("all")
-public class TestDataFileHelper {
+public class TestDataFile {
 
     private static final Logger LOG = Logger.getLogger(TestDataFileHelper.class
             .getName());
 
     @Test
     public void shouldReadMetaDataFromAValidStream() throws IOException {
-        DataFileHelper helper = new DataFileHelper();
+        DataFile helper = new DataFile();
         helper.parse(new File("Work/db-1x2.db"));
         assertEquals(helper.getStartOfDataOffset(), 74);
         assertEquals(helper.getRecordFieldsCount(), 7);
@@ -29,7 +29,7 @@ public class TestDataFileHelper {
 
     @Test
     public void shouldReadAllRecordsFromAValidStream() throws IOException {
-        DataFileHelper helper = new DataFileHelper();
+        DataFile helper = new DataFile();
         helper.parse(new File("Work/db-1x2.db"));
 
         int lastRecordNum = -1;

@@ -15,15 +15,15 @@ import java.util.logging.Logger;
 /**
  * 
  */
-public class DataFileHelper {
+public class DataFile {
 
     /**
-     * 
+     * Magic number flag for a deleted record
      */
     private static final int DELETED_RECORD_FLAG = 0x8000;
 
-    private static final Logger LOG = Logger.getLogger(DataFileHelper.class
-            .getName());
+    private static final Logger LOG = Logger
+            .getLogger(DataFile.class.getName());
 
     private int startOfDataOffset;
 
@@ -32,12 +32,31 @@ public class DataFileHelper {
     private final List<SchemaEntry> schema = new ArrayList<SchemaEntry>();
     private final List<String[]> records = new ArrayList<String[]>();
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see suncertify.db.IDataHelper#parse(java.io.File)
-     */
-    public synchronized final void parse(final File source) throws IOException {
+    public DataFile(final File source) {
+
+    }
+
+    public final short getRecordFieldsCount() {
+        return this.recordFieldsCount;
+    }
+
+    public final int getStartOfDataOffset() {
+        return this.startOfDataOffset;
+    }
+
+    public final int getRecordCount() {
+        return this.records.size();
+    }
+
+    public final List<String[]> getRecords() {
+        return Collections.unmodifiableList(this.records);
+    }
+
+    public final List<SchemaEntry> getSchema() {
+        return Collections.unmodifiableList(this.schema);
+    }
+
+    private void parse(final File source) throws IOException {
         java.io.DataInputStream inputStream = new DataInputStream(
                 new BufferedInputStream(new FileInputStream(source)));
         parseStartOfFile(inputStream);
@@ -127,51 +146,6 @@ public class DataFileHelper {
             stringValue.append((char) inputStream.readByte());
         }
         return stringValue.toString();
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see suncertify.db.IDataHelper#getRecordFieldsCount()
-     */
-    public final short getRecordFieldsCount() {
-        return this.recordFieldsCount;
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see suncertify.db.IDataHelper#getStartOfDataOffset()
-     */
-    public final int getStartOfDataOffset() {
-        return this.startOfDataOffset;
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see suncertify.db.IDataHelper#getRecordCount()
-     */
-    public final int getRecordCount() {
-        return this.records.size();
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see suncertify.db.IDataHelper#getRecords()
-     */
-    public final List<String[]> getRecords() {
-        return Collections.unmodifiableList(this.records);
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see suncertify.db.IDataHelper#getSchema()
-     */
-    public final List<SchemaEntry> getSchema() {
-        return Collections.unmodifiableList(this.schema);
     }
 
 }
