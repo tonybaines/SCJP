@@ -32,8 +32,18 @@ public class DataFile {
     private final List<SchemaEntry> schema = new ArrayList<SchemaEntry>();
     private final List<String[]> records = new ArrayList<String[]>();
 
-    public DataFile(final File source) {
+    private DataFile(final File source) {
 
+    }
+
+    public DataFile getInstance() {
+        if (this.instance == null) {
+            synchronized {
+
+            }
+        }
+
+        return
     }
 
     public final short getRecordFieldsCount() {
