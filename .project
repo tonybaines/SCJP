@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>SCJD Exam</name>
+	<name>SCJP</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -30,12 +30,18 @@
 			<arguments>
 			</arguments>
 		</buildCommand>
+		<buildCommand>
+			<name>org.devzuz.q.maven.jdt.core.mavenIncrementalBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
 	</buildSpec>
 	<natures>
-		<nature>org.eclipse.jdt.core.javanature</nature>
+		<nature>com.jutils.lint4j.core.Nature</nature>
+		<nature>net.sourceforge.pmd.runtime.pmdNature</nature>
+		<nature>org.devzuz.q.maven.jdt.core.mavenNature</nature>
 		<nature>org.maven.ide.eclipse.maven2Nature</nature>
 		<nature>com.stateofflow.eclipse.metrics.MetricsNature</nature>
-		<nature>net.sourceforge.pmd.runtime.pmdNature</nature>
-		<nature>com.jutils.lint4j.core.Nature</nature>
+		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
 </projectDescription>
